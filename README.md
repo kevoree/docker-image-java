@@ -9,17 +9,17 @@ docker pull kevoree/java:latest
 
 ### Usage
 
-This image contains Kevoree’s Watchdog Jar file. This application allows you to start any Kevoree Java runtime using the following pattern:  
-
-  - If you don’t specify **-Dnode.name** it will use “node0” by default  
-    `NODE_NAME_TO_START_FROM=node0`  
-
-  - You can also specify a Kevoree model JSON file  
-    `PATH_TO_A_KEVSCRIPT_FILE=/path/to/your/kevscript.kevs`  
-
-  - By default the version started is the latest, but you can also ask for a specific version (eg. “5.0.12” instead of “release”)  
-    `RUNTIME_VERSION=release`  
-
+Default usage will start the latest Kevoree Java runtime using node “node0: JavaNode” and a default group “sync: WSGroup”
 ```sh
-docker run -it kevoree/java java -jar -Dnode.name=${NODE_NAME_TO_START_FROM} -Dnode.bootstrap=${PATH_TO_A_KEVSCRIPT_FILE} /root/kevoree.jar ${RUNTIME_VERSION}
+docker run -t kevoree/java
+```
+
+But you can override the defaults by using Kevoree Java runtime command-line arguments:  
+```sh
+docker run -t kevoree/java:5.1.0 -Dnode.name=foo
+```
+
+**NB:** If you want to use your own model to bootstrap your runtime (model.json or model.kevs) you will need to mount it:  
+```sh
+docker run -t -v /path/to/my/model.kevs:/root/model.kevs kevoree/java:5.1.0 -Dnode.name=myNode -Dnode.bootstrap=/root/model.kevs
 ```

@@ -1,0 +1,2 @@
+#! /bin/sh
+java -jar $@ /root/kevoree.jar 5.1.0
