@@ -25,4 +25,4 @@ docker run -t -v /path/to/my/model.kevs:/root/model.kevs kevoree/java:5.1.0 -Dno
 ```
 
 ### Awesomeness
-Start your container using `-p 9000:9000` to expose the port locally, and go to the `[Kevoree Web Editor](http://editor.kevoree.org/?host=127.0.0.1)`
+Start your container using `-p 9000:9000` to expose the port locally, and go to the [Kevoree Web Editor](http://editor.kevoree.org/?host=127.0.0.1)
